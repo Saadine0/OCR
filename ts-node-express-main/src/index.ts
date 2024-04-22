@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import multer from "multer";
 const bodyParser = require("body-parser");
 import userRoutes from "../routes/userRoutes";
+const cors = require('cors');
 
 
 /*
@@ -28,6 +29,7 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use("/", userRoutes);
 

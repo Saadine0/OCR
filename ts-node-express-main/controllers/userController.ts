@@ -36,12 +36,15 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+console.log(upload)
 
 async function handleFileUpload(req, res) {
-  console.log(req.file.path);
+
+
+  
   try {
     const imagePath: string = `./upload/images/${req.file.filename}`; // Path to the uploaded image
-
+    console.log(req.file)
     // Perform OCR
     const { data } = await ocr.recognize(imagePath, 'eng', {
       logger: (e: any) => console.log(e), // Optional logger for debugging
