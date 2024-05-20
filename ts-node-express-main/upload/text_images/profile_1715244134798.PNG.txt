@@ -1,0 +1,15 @@
+Joanna Binet FACTURE
+48 Coubertin
+31400 Paris
+Facturé a Envoyé a Facture n® FR-001
+Cendrillon Ayot Cendrillon Ayot Date 2000172019
+69 rue Nations 46 Rue St Ferréol .
+22000 Paris 92360 lle-de-France Commands eaote
+Echéance 24/0512019
+QTE DESIGNATION PRIX UNIT. HT MONTANT HT
+1 Grand brun escargot pour manger 100.00 100.00
+2 Petit mariniére uniforme en bleu 15.00 30.00
+3 Facile a joer accordéon 5.00 15.00
+Total HT 145.00
+TVA 20.0% 20.00
+TOTAL 174.00 €

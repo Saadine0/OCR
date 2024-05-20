@@ -1,0 +1,14 @@
+Meroe | Rules of Hooks
+oe o
+© Only call Hooks inside of Component Functions
+React Hooks must not be called outside of React component functions
+| function App() { [const [val, setVal] = useState(0);
+const [val, setVal] = useState(0);
+I function App() { .. }
+(-] Only call Hooks on the top level
+React Hooks must not be called in nested code statements (e.g., inside of if-statements)
+Qo z function App() {
+I function App() { a
+i = BN | if (someCondition)
+) Col-ENINE RSE Hal E Uses tate (Bh const [val, setVal] = useState(0);
+| b |

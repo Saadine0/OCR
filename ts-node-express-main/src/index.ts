@@ -1,9 +1,8 @@
 // src/index.ts
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
-import multer from "multer";
 const bodyParser = require("body-parser");
-import userRoutes from "../routes/userRoutes";
+import userRoutes from "../routes/Routes";
 const cors = require('cors');
 
 
