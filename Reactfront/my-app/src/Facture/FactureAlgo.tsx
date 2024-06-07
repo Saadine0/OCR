@@ -29,6 +29,7 @@ const FactureAlgo: React.FC = () => {
   return (
     <div className="p-16 grid App">
       <UploadComponent
+         label = "Facture"
         setSelectedFile={setSelectedFile}
         setUploadStatus={setUploadStatus}
         setUploadSuccess={setUploadSuccess}

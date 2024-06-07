@@ -5,6 +5,7 @@ import SelectedFileComponent from "./SelectedFileComponent";
 import YourComponent from "../CarteVisite/CarteVisiteEndPoint";
 
 interface UploadComponentProps {
+  label: string,
   setSelectedFile: React.Dispatch<React.SetStateAction<File | null>>;
   setUploadStatus: React.Dispatch<React.SetStateAction<string>>;
   setUploadSuccess: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,6 +26,7 @@ interface UploadComponentProps {
 }
 
 const UploadComponent: React.FC<UploadComponentProps> = ({
+  label,
   setSelectedFile,
   setUploadStatus,
   setUploadSuccess,
@@ -116,7 +118,7 @@ const UploadComponent: React.FC<UploadComponentProps> = ({
           />
         </svg>
         <h2 className="mt-1 text-2xl font-bold tracking-wide text-white dark:text-gray-200">
-          Sélectionner Votre Image
+          Sélectionner Votre { label}
         </h2>
 
         <input

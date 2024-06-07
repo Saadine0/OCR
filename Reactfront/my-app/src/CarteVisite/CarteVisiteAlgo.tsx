@@ -30,6 +30,7 @@ const CarteVisiteAlgo: React.FC = () => {
   return (
     <div className="p-16 grid App">
       <UploadComponent
+       label = "Carte-visite"
         setSelectedFile={setSelectedFile}
         setUploadStatus={setUploadStatus}
         setUploadSuccess={setUploadSuccess}
@@ -50,7 +51,7 @@ const CarteVisiteAlgo: React.FC = () => {
         />
       </div>
     </div>
-  );
+  ); 
 };
 
 export default CarteVisiteAlgo;

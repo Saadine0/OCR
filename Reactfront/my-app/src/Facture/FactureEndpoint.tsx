@@ -104,7 +104,7 @@ const FactureEndpoint: React.FC<YourComponentProps> = ({ selectedFile }) => {
       </button>
       {loading && <p className="mt-4 text-black">Processing...</p>}
       {editableData && (
-        <div className="mt-6">
+        <div className="mt-6 size-auto">
           <h2 className="text-xl font-semibold">Extracted Entities:</h2>
           <table className="mt-4 w-full border-collapse border border-gray-300">
             <thead className="bg-gray-200">

@@ -12,7 +12,7 @@ const ExtractedTextComponent = ({ responseText }) => {
   };
 
   return (
-    <div className="border h-96 w-auto rounded">
+    <div className="border h-96 w-auto rounded bg-white">
       <div className="justify-self-end p-6">
         <h2 className="overline text-[#BF0404] font-mono">Extracted Text</h2>
         <div className="flex justify-end">

@@ -8,20 +8,18 @@ import Header from "./Header-Footer/header";
 import ExtractedDataPage from "./Displaytext/extractedDataPage";
 import FactureAlgo from "./Facture/FactureAlgo";
 import AttestationAlgo from "./Attestation/AttestationAlgo";
+import GuidepopUp from "./Guide_popUP/GuidepopUp";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen">
+      <div className="bg-gif-background flex flex-col min-h-screen">
         <Header />
         <div className="flex-1">
           <Routes>
             <Route path="/Facture" element={<FactureAlgo />} />
-            
             <Route path="/Cartevisite" element={<CarteVisiteAlgo />} />
-
             <Route path="/Attestation" element={<AttestationAlgo />} />
-
             <Route path="/" element={<DisplaySelectDoc />} />
           </Routes>
         </div>

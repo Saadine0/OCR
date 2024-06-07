@@ -14,12 +14,15 @@ interface YourComponentProps {
   selectedFile: File | null;
 }
 
-const CarteVisiteEndpoint: React.FC<YourComponentProps> = ({ selectedFile }) => {
+const CarteVisiteEndpoint: React.FC<YourComponentProps> = ({
+  selectedFile,
+}) => {
   const [responseData, setResponseData] = useState<ResponseData | null>(null);
   const [loading, setLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editableData, setEditableData] = useState<ResponseData | null>(null);
   const [isEdited, setIsEdited] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false); // New state for success message
 
   const handleUpload = async () => {
     if (!selectedFile) {
@@ -44,6 +47,7 @@ const CarteVisiteEndpoint: React.FC<YourComponentProps> = ({ selectedFile }) => 
       setResponseData(response.data);
       setEditableData(response.data);
       setIsEdited(false);
+      console.log("Data fetched from server:", response.data);
     } catch (error) {
       console.error("Error uploading file:", error);
     } finally {
@@ -59,12 +63,35 @@ const CarteVisiteEndpoint: React.FC<YourComponentProps> = ({ selectedFile }) => 
     setResponseData(editableData);
     setIsEditing(false);
     setIsEdited(false);
+    console.log("Data saved locally:", editableData);
   };
 
   const handleCancelClick = () => {
     setEditableData(responseData);
     setIsEditing(false);
     setIsEdited(false);
+    console.log("Changes canceled. Reverted to original data:", responseData);
+  };
+
+  const handleSaveToDatabase = async () => {
+    if (!editableData) return;
+
+    try {
+      setLoading(true);
+      await axios.post("http://localhost:3000/saveData", editableData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setIsEdited(false);
+      setSaveSuccess(true); // Set success message state to true
+      console.log("Data saved to database:", editableData);
+    } catch (error) {
+      console.error("Error saving data:", error);
+      alert("Error saving data.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (field: string, value: string | string[]) => {
@@ -78,6 +105,7 @@ const CarteVisiteEndpoint: React.FC<YourComponentProps> = ({ selectedFile }) => 
     }
     setEditableData(updatedData);
     setIsEdited(JSON.stringify(updatedData) !== JSON.stringify(responseData));
+    console.log("Editable data changed:", updatedData);
   };
 
   return (
@@ -160,14 +188,23 @@ const CarteVisiteEndpoint: React.FC<YourComponentProps> = ({ selectedFile }) => 
               </button>
             </div>
           ) : (
-            <div className="mt-4 flex justify-end">
+            <div className="mt-4 flex justify-between ">
+              <button
+                onClick={handleSaveToDatabase}
+                className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700"
+              >
+                Save To Database
+              </button>
               <button
                 onClick={handleEditClick}
                 className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-700"
-              >
+                >
                 Edit
               </button>
             </div>
+          )}
+          {saveSuccess && (
+            <div className="mt-4 text-green-500">Data saved successfully!</div>
           )}
           {isEdited && (
             <div className="mt-4 text-red-500">You have unsaved changes.</div>
